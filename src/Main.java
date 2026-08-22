@@ -4,14 +4,19 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        Pilha minhaPilha = new PilhaArray(5,0);
-        minhaPilha.push("(Primeiro Elemento)");
-        minhaPilha.push("(Segundo Elemento)");
 
-        System.out.println("Removendo o item: " + minhaPilha.pop() + " do topo");
-        System.out.println("O item no topo da pilha é: " + minhaPilha.top());
+        Pilha minhaPilha = new PilhaListaEncadeada();
 
-        System.out.println("O tamanho atual da pilha é:" + minhaPilha.size());
+        minhaPilha.push("Primero Item");
+        minhaPilha.push("Segundo Item");
+        minhaPilha.push("Terceiro Item");
+
+        System.out.println("O " + minhaPilha.pop() + " foi removido da pilha");
+        System.out.println("O " + minhaPilha.pop() + " foi removido da pilha");
+
+        System.out.println("O item no topo da pilha é o: " + minhaPilha.top());
+        System.out.println("A minha pilha está com o tamanho de " + minhaPilha.size());
+        minhaPilha.isEmpty();
 
     }
 }
