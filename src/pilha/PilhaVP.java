@@ -24,7 +24,7 @@ public class PilhaVP implements Pilha{
             int indiceTempB = (capacidade - 1);
             Object b[] = new Object[capacidade];
 
-            for(int i = 0; i <=sizePreto; i++){
+            for(int i = 0; i <sizePreto; i++){
                 b[indiceTempB-i] = a[indiceTempA-i];
             }
             for(int f=0; f<sizeVermelho; f++){
@@ -74,6 +74,8 @@ public class PilhaVP implements Pilha{
             for(int f=0; f<sizeVermelho; f++){
                 b[f] = a[f];
             }
+            a = b;
+            topoPreto = capacidade - sizePreto;
         }
         Object itemRemovido = a[topoVermelho--];
         return itemRemovido;
@@ -96,6 +98,8 @@ public class PilhaVP implements Pilha{
             for(int f=0; f<sizeVermelho; f++){
                 b[f] = a[f];
             }
+            a = b;
+            topoPreto = capacidade - sizePreto;
         }
         Object itemRemovido = a[topoPreto++];
         return itemRemovido;
@@ -109,7 +113,7 @@ public class PilhaVP implements Pilha{
     }
 
     public Object topP() throws PilhaVaziaExcecao{
-        if(isEmpty()){
+        if(isEmptyP()){
             throw new PilhaVaziaExcecao("A pilha está vazia");
         }
         return a[topoPreto];
