@@ -1,6 +1,6 @@
 package pilha;
 
-public class PilhaVP implements Pilha{
+public class PilhaRubroNegra implements Pilha{
     private int capacidade;
     private Object[] a;
     private int topoVermelho;
@@ -8,7 +8,7 @@ public class PilhaVP implements Pilha{
     private int sizeVermelho;
     private int sizePreto;
 
-    public PilhaVP(){
+    public PilhaRubroNegra(){
         this.capacidade = 1;
         topoVermelho = -1;
         topoPreto = capacidade;
@@ -51,6 +51,7 @@ public class PilhaVP implements Pilha{
             for(int f=0; f<sizeVermelho; f++){
                 b[f] = a[f];
             }
+            a = b;
         }
         topoPreto = capacidade - sizePreto;
         a[--topoPreto] = item;
@@ -77,7 +78,9 @@ public class PilhaVP implements Pilha{
             a = b;
             topoPreto = capacidade - sizePreto;
         }
+
         Object itemRemovido = a[topoVermelho--];
+        sizeVermelho--;
         return itemRemovido;
     }
 
@@ -101,7 +104,9 @@ public class PilhaVP implements Pilha{
             a = b;
             topoPreto = capacidade - sizePreto;
         }
+
         Object itemRemovido = a[topoPreto++];
+        sizePreto--;
         return itemRemovido;
     }
 
