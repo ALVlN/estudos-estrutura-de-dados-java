@@ -1,22 +1,30 @@
 import pilha.*;
+import fila.*;
+import vetor.*;
+
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        Pilha minhaPilha = new PilhaListaEncadeada();
+        VetorArray meuVetor = new VetorArray();
 
-        minhaPilha.push("Primero Item");
-        minhaPilha.push("Segundo Item");
-        minhaPilha.push("Terceiro Item");
+        meuVetor.insertAtRank(0,"A");
+        meuVetor.insertAtRank(1, "C");
+        meuVetor.insertAtRank(2, "B");
 
-        System.out.println("O " + minhaPilha.pop() + " foi removido da pilha");
-        System.out.println("O " + minhaPilha.pop() + " foi removido da pilha");
+        meuVetor.mostrarEstado();
 
-        System.out.println("O item no topo da pilha é o: " + minhaPilha.top());
-        System.out.println("A minha pilha está com o tamanho de " + minhaPilha.size());
-        minhaPilha.isEmpty();
+        meuVetor.replaceAtRank(1,"B");
+        meuVetor.replaceAtRank(2,"C");
+
+        meuVetor.mostrarEstado();
+
+        meuVetor.removeAtRank(1);
+
+        meuVetor.mostrarEstado();
+
 
     }
 }

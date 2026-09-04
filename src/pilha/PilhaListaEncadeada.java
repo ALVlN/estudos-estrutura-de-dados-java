@@ -19,7 +19,7 @@ public class PilhaListaEncadeada implements Pilha {
 
     public Object pop() throws PilhaVaziaExcecao{
         if(isEmpty()){
-            throw new PilhaVaziaExcecao("A pilha está vaiza");
+            throw new PilhaVaziaExcecao("A pilha está vazia");
         }
 
         Object itemRemovido = t.getValue();

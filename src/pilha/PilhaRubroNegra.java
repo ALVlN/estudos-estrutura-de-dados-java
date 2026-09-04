@@ -9,7 +9,7 @@ public class PilhaRubroNegra implements Pilha{
     private int sizePreto;
 
     public PilhaRubroNegra(){
-        this.capacidade = 1;
+        this.capacidade = 2;
         topoVermelho = -1;
         topoPreto = capacidade;
         sizeVermelho = 0;
@@ -39,7 +39,7 @@ public class PilhaRubroNegra implements Pilha{
     }
 
     public void pushP(Object item){
-        if(topoPreto <= 0 || topoPreto <= topoVermelho){
+        if(topoPreto <= 0 || topoPreto <= topoVermelho + 1){
             int indiceTempA = (capacidade - 1);
             capacidade *= 2;
             int indiceTempB = (capacidade -1);
@@ -63,6 +63,9 @@ public class PilhaRubroNegra implements Pilha{
             throw new PilhaVaziaExcecao("A pilha está vazia");
         }
 
+        Object itemRemovido = a[topoVermelho--];
+        sizeVermelho--;
+
         if((capacidade / 3) > (sizePreto + sizeVermelho)){
             int indiceTempA = (capacidade -1);
             capacidade /= 2;
@@ -78,9 +81,6 @@ public class PilhaRubroNegra implements Pilha{
             a = b;
             topoPreto = capacidade - sizePreto;
         }
-
-        Object itemRemovido = a[topoVermelho--];
-        sizeVermelho--;
         return itemRemovido;
     }
 
@@ -89,7 +89,10 @@ public class PilhaRubroNegra implements Pilha{
             throw new PilhaVaziaExcecao("A pilha está vazia");
         }
 
-        if((capacidade / 3) > (sizePreto + sizeVermelho)){
+        Object itemRemovido = a[topoPreto++];
+        sizePreto--;
+
+        if((capacidade / 3) >= (sizePreto + sizeVermelho)){
             int indiceTempA = (capacidade -1);
             capacidade /= 2;
             int indiceTempB = (capacidade -1);
@@ -104,9 +107,6 @@ public class PilhaRubroNegra implements Pilha{
             a = b;
             topoPreto = capacidade - sizePreto;
         }
-
-        Object itemRemovido = a[topoPreto++];
-        sizePreto--;
         return itemRemovido;
     }
 
@@ -138,5 +138,23 @@ public class PilhaRubroNegra implements Pilha{
 
     public int sizeP(){
         return  sizePreto;
+    }
+
+    public void mostrarEstado() {
+        System.out.println("\n=== Estado Atual da Pilha Rubro-Negra ===");
+        System.out.println("Capacidade total: " + capacidade);
+        System.out.println("Tamanho Vermelho: " + sizeVermelho + " | Tamanho Preto: " + sizePreto);
+
+        System.out.print("Array: [ ");
+        for (int i = 0; i < capacidade; i++) {
+            if (i <= topoVermelho) {
+                System.out.print(a[i] + " ");
+            } else if (i >= topoPreto) {
+                System.out.print(a[i] + " ");
+            } else {
+                System.out.print(" -  ");
+            }
+        }
+        System.out.println("]");
     }
 }
