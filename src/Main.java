@@ -1,3 +1,4 @@
+import lista.*;
 import pilha.*;
 import fila.*;
 import vetor.*;
@@ -7,24 +8,20 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        ListaDuplamenteEncadeada lista = new ListaDuplamenteEncadeada();
 
-        VetorArray meuVetor = new VetorArray();
+        lista.insertFirst(1);
+        lista.insertLast(3);
+        lista.mostrarEstado();
 
-        meuVetor.insertAtRank(0,"A");
-        meuVetor.insertAtRank(1, "C");
-        meuVetor.insertAtRank(2, "B");
+        No noUm = lista.first();
+        lista.insertAfter(noUm, 2);
+        lista.mostrarEstado();
 
-        meuVetor.mostrarEstado();
-
-        meuVetor.replaceAtRank(1,"B");
-        meuVetor.replaceAtRank(2,"C");
-
-        meuVetor.mostrarEstado();
-
-        meuVetor.removeAtRank(1);
-
-        meuVetor.mostrarEstado();
-
-
+        lista.remove(lista.last());
+        lista.mostrarEstado();
+        System.out.println(lista.search(2).getElement());
+        lista.insertAfter(lista.search(1), 2004);
+        lista.mostrarEstado();
     }
 }
